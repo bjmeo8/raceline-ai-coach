@@ -78,3 +78,4 @@ push_datasets.sh
 # Ignore tout le dataset
 data/*
 !data/COTA Race 1/
+!data/COTA Race 2/
