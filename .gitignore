@@ -45,6 +45,7 @@ cache/
 *.swp
 *.swo
 desktop.ini
+push_datasets.sh
 
 # ============================================
 # ----           ENVIRONMENT VARS          ---
@@ -76,7 +77,4 @@ desktop.ini
 
 # Ignore tout le dataset
 data/*
-
-# Mais autoriser barber + indianapolis
-!data/barber/
-!data/indianapolis/
+!data/COTA Race 1/
