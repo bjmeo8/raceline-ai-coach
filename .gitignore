@@ -79,3 +79,4 @@ push_datasets.sh
 data/*
 !data/COTA Race 1/
 !data/COTA Race 2/
+!data/VIR Race 1/
