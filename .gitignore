@@ -1,0 +1,99 @@
+# ============================================
+# ----    FRONTEND (HTML / CSS / JS)      ----
+# ============================================
+
+# Node / build tools
+node_modules/
+dist/
+build/
+.cache/
+.tmp/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# ============================================
+# ----            PYTHON BACKEND           ---
+# ============================================
+
+# Virtual env
+venv/
+env/
+ENV/
+*.pyc
+__pycache__/
+
+# Python cache
+*.pyo
+*.pyd
+*.pdb
+*.pkl
+*.pickle
+
+# Common Python tooling
+.mypy_cache/
+.pytest_cache/
+coverage/
+
+# Temp data
+data/tmp/
+cache/
+
+# ============================================
+# ----         EDITORS / CONFIG            ---
+# ============================================
+
+# VSCode
+.vscode/
+.history/
+
+# JetBrains
+.idea/
+
+# ============================================
+# ----            SYSTEM FILES             ---
+# ============================================
+
+# WSL / Linux
+*.swp
+*.swo
+
+# Windows crap
+desktop.ini
+
+# ============================================
+# ----           ENVIRONMENT VARS          ---
+# ============================================
+
+# Environment files (NEVER commit API keys)
+.env
+.env.*
+*.secret
+*.key
+
+# ============================================
+# ----         FIREBASE / GOOGLE           ---
+# ============================================
+
+# Firebase artifacts
+.firebase/
+.firebaserc
+
+# Google credentials
+*service-account*.json
+
+# ============================================
+# ----         OPTIONAL FRONTEND           ---
+# ============================================
+
+# Tailwind JIT artifacts
+*.css.map
+*.sass-cache/
+

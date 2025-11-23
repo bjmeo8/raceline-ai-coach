@@ -1,0 +1,112 @@
+.
+├── COTA Race 1
+│   ├── 00_Results GR Cup Race 1 Official_Anonymized.CSV
+│   ├── 03_Provisional Results_Race 1_Anonymized.CSV
+│   ├── 05_Provisional Results by Class_Race 1_Anonymized.CSV
+│   ├── 23_AnalysisEnduranceWithSections_Race 1_Anonymized.CSV
+│   ├── 26_Weather_Race 1_Anonymized.CSV
+│   ├── 99_Best 10 Laps By Driver_Race 1_Anonymized.CSV
+│   ├── COTA_lap_end_time_R1.csv
+│   ├── COTA_lap_start_time_R1.csv
+│   ├── COTA_lap_time_R1.csv
+│   └── R1_cota_telemetry_data.csv
+├── COTA Race 2
+│   ├── 03_Provisional Results_ Race 2_Anonymized.CSV
+│   ├── 05_Provisional Results by Class_ Race 2_Anonymized.CSV
+│   ├── 23_AnalysisEnduranceWithSections_ Race 2_Anonymized.CSV
+│   ├── 26_Weather_ Race 2_Anonymized.CSV
+│   ├── 99_Best 10 Laps By Driver_ Race 2_Anonymized.CSV
+│   ├── COTA_lap_end_time_R2.csv
+│   ├── COTA_lap_start_time_R2.csv
+│   ├── COTA_lap_time_R2.csv
+│   └── R2_cota_telemetry_data.csv
+├── VIR Race 1
+│   ├── 03_Provisional Results_Race 1_Anonymized.CSV
+│   ├── 03_Results GR Cup Race 1 Official_Anonymized.CSV
+│   ├── 05_Provisional Results by Class_Race 1_Anonymized.CSV
+│   ├── 05_Results by Class GR Cup Race 1 Official_Anonymized.CSV
+│   ├── 23_AnalysisEnduranceWithSections_Race 1_Anonymized.CSV
+│   ├── 26_Weather_Race 1_Anonymized.CSV
+│   ├── 99_Best 10 Laps By Driver_Race 1_Anonymized.CSV
+│   ├── R1_vir_telemetry_data.csv
+│   ├── vir_lap_end_R1.csv
+│   ├── vir_lap_start_R1.csv
+│   └── vir_lap_time_R1.csv
+├── VIR Race 2
+│   ├── 03_Provisional Results_Race 2_Anonymized.CSV
+│   ├── 03_Results GR Cup Race 2 Official_Anonymized.CSV
+│   ├── 05_Provisional Results by Class_Race 2_Anonymized.CSV
+│   ├── 05_Results by Class GR Cup Race 2 Official_Anonymized.CSV
+│   ├── 23_AnalysisEnduranceWithSections_Race 2_Anonymized.CSV
+│   ├── 26_Weather_Race 2_Anonymized.CSV
+│   ├── 99_Best 10 Laps By Driver_Race 2_Anonymized.CSV
+│   ├── R2_vir_telemetry_data.csv
+│   ├── vir_lap_end_R2.csv
+│   ├── vir_lap_start_R2.csv
+│   └── vir_lap_time_R2.csv
+├── road america Race 2
+│   ├── 03_Provisional Results_Race 2_Anonymized.CSV
+│   ├── 03_Results GR Cup Race 2 Official_Anonymized.CSV
+│   ├── 05_Provisional Results by Class_Race 2_Anonymized.CSV
+│   ├── 05_Results by Class GR Cup Race 2 Official_Anonymized.CSV
+│   ├── 23_AnalysisEnduranceWithSections_Race 2_Anonymized.CSV
+│   ├── 26_Weather_Race 2_Anonymized.CSV
+│   ├── 99_Best 10 Laps By Driver_Race 2_Anonymized.CSV
+│   ├── R2_road_america_telemetry_data.csv
+│   ├── road_america_lap_end_R2.csv
+│   ├── road_america_lap_start_R2.csv
+│   └── road_america_lap_time_R2.csv
+├── road-america Race 1
+│   ├── 03_Provisional Results_Race 1_Anonymized.CSV
+│   ├── 03_Results GR Cup Race 1 Official1_Anonymized.CSV
+│   ├── 05_Provisional Results by Class_Race 1_Anonymized.CSV
+│   ├── 05_Results by Class GR Cup Race 1 Official_Anonymized.CSV
+│   ├── 23_AnalysisEnduranceWithSections_Race 1_Anonymized.CSV
+│   ├── 26_Weather_Race 1_Anonymized.CSV
+│   ├── 99_Best 10 Laps By Driver_Race 1_Anonymized.CSV
+│   ├── R1_road_america_telemetry_data.csv
+│   ├── road_america_lap_end_R1.csv
+│   ├── road_america_lap_start_R1.csv
+│   └── road_america_lap_time_R1.csv
+├── sebring Race 1
+│   ├── 00_Results GR Race 1 Official_Anonymized.CSV
+│   ├── 03_Provisional Results_Race 1_Anonymized.CSV
+│   ├── 05_Provisional Results by Class_Race 1_Anonymized.CSV
+│   ├── 23_AnalysisEnduranceWithSections_Race 1_Anonymized.CSV
+│   ├── 26_Weather_Race 1_Anonymized.CSV
+│   ├── 99_Best 10 Laps By Driver_Race 1_Anonymized.CSV
+│   ├── sebring_lap_end_time_R1.csv
+│   ├── sebring_lap_start_time_R1.csv
+│   ├── sebring_lap_time_R1.csv
+│   └── sebring_telemetry_R1.csv
+├── sebring Race 2
+│   ├── 00_Results GR Race 2 Official_Anonymized.CSV
+│   ├── 03_Provisional Results_Race 2_Anonymized.CSV
+│   ├── 05_Provisional Results by Class_Race 2_Anonymized.CSV
+│   ├── 23_AnalysisEnduranceWithSections_Race 2_Anonymized.CSV
+│   ├── 26_Weather_Race 2_Anonymized.CSV
+│   ├── 99_Best 10 Laps By Driver_Race 2_Anonymized.CSV
+│   ├── sebring_lap_end_time_R2.csv
+│   ├── sebring_lap_start_time_R2.csv
+│   ├── sebring_lap_time_R2.csv
+│   └── sebring_telemetry_R2.csv
+├── sonoma Race 1
+│   ├── 03_Results_Anonymized.CSV
+│   ├── 05_Results by Class_Race 1_Anonymized.CSV
+│   ├── 23_AnalysisEnduranceWithSections_Race 1_Anonymized.CSV
+│   ├── 26_Weather_Race 1_Anonymized.CSV
+│   ├── 99_Best 10 Laps By Driver_Race 1_Anonymized.CSV
+│   ├── sonoma_lap_end_time_R1.csv
+│   ├── sonoma_lap_start_time_R1.csv
+│   ├── sonoma_lap_time_R1.csv
+│   └── sonoma_telemetry_R1.csv
+└── sonoma Race 2
+    ├── 03_Provisional_Results_Race 2_Anonymized.CSV
+    ├── 03_Results_Anonymized.CSV
+    ├── 05_Provisional_Results by Class_Race 2_Anonymized.CSV
+    ├── 23_AnalysisEnduranceWithSections_Race 2_Anonymized.CSV
+    ├── 99_Best 10 Laps By Driver_Race 2_Anonymized.CSV
+    ├── sonoma_lap_end_time_R2.csv
+    ├── sonoma_lap_start_time_R2.csv
+    ├── sonoma_lap_time_R2.csv
+    └── sonoma_telemetry_R2.csv

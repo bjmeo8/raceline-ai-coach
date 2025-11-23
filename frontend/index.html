@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RaceLine AI Coach</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7.8.5/dist/d3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-slide-in {
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .animate-pulse-slow {
+            animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        #track-visual-container {
+            width: 100%;
+            height: 520px;
+            border-radius: 12px;
+            overflow: hidden;
+            background: radial-gradient(circle at top, rgba(59,130,246,0.08), transparent 70%);
+        }
+        
+        .glass-effect {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .gradient-border {
+            position: relative;
+            background: linear-gradient(145deg, rgba(59, 130, 246, 0.1), rgba(147, 51, 234, 0.1));
+            border: 2px solid transparent;
+        }
+        
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 2px;
+            background: linear-gradient(145deg, #3b82f6, #9333ea);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 text-white min-h-screen">
+    <!-- Header -->
+    <header class="glass-effect border-b border-gray-700">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex items-center gap-4">
+                <div class="text-5xl">🏁</div>
+                <div>
+                    <h1 class="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                        RaceLine AI Coach
+                    </h1>
+                    <p class="text-gray-400 text-sm">AI-Powered Motorsports Performance Analysis</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Left Panel: Selection -->
+            <div class="lg:col-span-1 space-y-6">
+                <!-- Circuit Selection -->
+                <div class="glass-effect rounded-xl p-6 animate-slide-in">
+                    <h2 class="text-xl font-semibold mb-4 flex items-center gap-2">
+                        <span class="text-2xl">📍</span>
+                        <span>Select Circuit</span>
+                    </h2>
+                    <select id="circuit-select" class="w-full bg-gray-800 border border-gray-600 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none transition">
+                        <option value="">Loading...</option>
+                    </select>
+                </div>
+
+                <!-- Golden Lap Info -->
+                <div id="golden-lap-card" class="gradient-border rounded-xl p-6 hidden animate-slide-in bg-gradient-to-br from-yellow-900/20 to-orange-900/20" style="animation-delay: 0.05s">
+                    <h3 class="text-lg font-semibold mb-3 flex items-center gap-2">
+                        <span class="text-2xl">🏆</span>
+                        <span>Golden Lap</span>
+                    </h3>
+                    <div id="golden-lap-info"></div>
+                </div>
+
+                <!-- Vehicle Selection -->
+                <div class="glass-effect rounded-xl p-6 animate-slide-in" style="animation-delay: 0.1s">
+                    <h2 class="text-xl font-semibold mb-4 flex items-center gap-2">
+                        <span class="text-2xl">🏎️</span>
+                        <span>Select Vehicle</span>
+                    </h2>
+                    <div id="vehicle-list" class="text-gray-400">
+                        Select a circuit first
+                    </div>
+                </div>
+
+                <!-- Lap Selection -->
+                <div class="glass-effect rounded-xl p-6 animate-slide-in" style="animation-delay: 0.2s">
+                    <h2 class="text-xl font-semibold mb-4 flex items-center gap-2">
+                        <span class="text-2xl">⏱️</span>
+                        <span>Select Lap</span>
+                    </h2>
+                    <div id="lap-list" class="text-gray-400">
+                        Select a vehicle first
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Panel: Analysis -->
+            <div class="lg:col-span-2 space-y-6">
+                <!-- Analysis Summary -->
+                <div id="results-panel" class="glass-effect rounded-xl p-6 hidden">
+                    <!-- Summary injected by JavaScript -->
+                </div>
+
+                <!-- Consistency / Progression -->
+                <div id="consistency-panel" class="glass-effect rounded-xl p-6 hidden"></div>
+
+                <!-- Track Visualization -->
+                <div id="track-visual-panel" class="glass-effect rounded-xl p-6 hidden">
+                    <div class="flex flex-col gap-4 mb-4 md:flex-row md:items-center md:justify-between">
+                        <div>
+                            <h2 class="text-2xl font-semibold flex items-center gap-2">
+                                <span>🧭</span>
+                                <span>Track Insight Maps</span>
+                            </h2>
+                            <p class="text-gray-400 text-sm mt-1">Pan &amp; zoom, then hover highlighted sections to read detailed tips.</p>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <button id="track-play-btn" class="bg-blue-600 hover:bg-blue-500 transition px-4 py-2 rounded-lg text-sm font-semibold flex items-center gap-2">
+                                <span>▶️</span>
+                                <span>Play Lap Replay</span>
+                            </button>
+                            <button id="track-reset-btn" class="bg-gray-700 hover:bg-gray-600 transition px-4 py-2 rounded-lg text-sm flex items-center gap-2">
+                                <span>↺</span>
+                                <span>Reset View</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="border-b border-gray-700 mb-4 flex flex-wrap">
+                        <button class="track-tab px-4 py-2 text-sm font-semibold bg-blue-800/40 rounded-t-lg" data-track-tab="comparison">Lap comparison</button>
+                        <button class="track-tab px-4 py-2 text-sm font-semibold text-gray-400" data-track-tab="heatmap">Consistency heatmap</button>
+                        <button class="track-tab px-4 py-2 text-sm font-semibold text-gray-400" data-track-tab="flow">Flow dynamics</button>
+                        <button class="track-tab px-4 py-2 text-sm font-semibold text-gray-400" data-track-tab="ghosts">Ghost laps</button>
+                    </div>
+                    <div id="track-visual-container" class="bg-gray-900 rounded-lg relative overflow-hidden"></div>
+                    <div id="track-legend" class="mt-4 flex flex-col gap-2 text-sm"></div>
+                </div>
+
+                <!-- Coaching Tabs -->
+                <div id="coach-panel" class="glass-effect rounded-xl p-6 hidden">
+                    <div class="border-b border-gray-700 mb-4 flex flex-wrap gap-2">
+                        <button class="coach-tab px-4 py-2 text-sm font-semibold bg-blue-800/40 rounded-t-lg" data-coach-tab="classic">🎯 Top 3 Areas to Improve</button>
+                        <button class="coach-tab px-4 py-2 text-sm font-semibold text-gray-400" data-coach-tab="ai">🤖 AI Coach Insights</button>
+                        <button class="coach-tab px-4 py-2 text-sm font-semibold text-gray-400" data-coach-tab="weather">🌤️ Weather</button>
+                    </div>
+                    <div data-coach-content="classic"></div>
+                    <div data-coach-content="ai" class="hidden"></div>
+                    <div data-coach-content="weather" class="hidden"></div>
+                </div>
+
+                <!-- Hot Zones -->
+                <div id="hotzones-panel" class="glass-effect rounded-xl p-6 hidden">
+                    <!-- Hot zones injected by JavaScript -->
+                </div>
+
+                <!-- Speed / Progression Charts -->
+                <div id="chart-panel" class="glass-effect rounded-xl p-6 hidden">
+                    <div class="border-b border-gray-700 mb-4 flex flex-wrap">
+                        <button class="chart-tab px-4 py-2 text-sm font-semibold bg-blue-800/40 rounded-t-lg" data-chart-tab="speed">Speed trace</button>
+                        <button class="chart-tab px-4 py-2 text-sm font-semibold text-gray-400" data-chart-tab="progression">Lap progression</button>
+                        <button class="chart-tab px-4 py-2 text-sm font-semibold text-gray-400" data-chart-tab="hotzones">Hot zones variance</button>
+                        <button class="chart-tab px-4 py-2 text-sm font-semibold text-gray-400" data-chart-tab="timeline">Race timeline</button>
+                    </div>
+                    <div>
+                        <div data-chart-content="speed">
+                            <div class="bg-gray-900 p-4 rounded">
+                                <canvas id="speed-chart"></canvas>
+                            </div>
+                        </div>
+                        <div data-chart-content="progression" class="hidden">
+                            <div class="bg-gray-900 p-4 rounded">
+                                <canvas id="progress-chart"></canvas>
+                            </div>
+                        </div>
+                        <div data-chart-content="hotzones" class="hidden">
+                            <div class="bg-gray-900 p-4 rounded">
+                                <canvas id="hotzone-chart"></canvas>
+                            </div>
+                        </div>
+                        <div data-chart-content="timeline" class="hidden">
+                            <div class="bg-gray-900 p-4 rounded">
+                                <canvas id="timeline-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Initial State -->
+                <div id="initial-message" class="glass-effect rounded-xl p-12 text-center animate-slide-in">
+                    <div class="text-8xl mb-6 animate-pulse-slow">🏎️</div>
+                    <h2 class="text-3xl font-semibold mb-3 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                        Welcome to RaceLine AI Coach
+                    </h2>
+                    <p class="text-gray-400 text-lg">Select a circuit and lap to start analyzing your performance</p>
+                    <div class="mt-8 flex justify-center gap-4 text-sm text-gray-500">
+                        <div class="flex items-center gap-2">
+                            <span>✓</span>
+                            <span>AI-Powered Analysis</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span>✓</span>
+                            <span>Interactive Track Maps</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span>✓</span>
+                            <span>Instant Feedback</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-12 py-6 text-center text-gray-500 text-sm">
+                    <p>Built with ❤️ for Hack the Track by Toyota GR</p>
+                </footer>
+
+                <script src="js/api.js"></script>
+    <script src="js/track2d.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
