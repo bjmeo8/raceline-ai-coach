@@ -70,22 +70,3 @@ push_datasets.sh
 
 *.css.map
 *.sass-cache/
-
-# ============================================
-# ----              DATA                    ---
-# ============================================
-
-# Ignore tout le dataset
-data/*
-!data/COTA Race 1/
-!data/COTA Race 2/
-!data/VIR Race 1/
-!data/VIR Race 2/
-!data/barber/
-!data/indianapolis/
-!data/road america Race 2/
-!data/road-america Race 1/
-!data/sebring Race 1/
-!data/sebring Race 2/
-!data/sonoma Race 1/
-!data/sonoma Race 2/
