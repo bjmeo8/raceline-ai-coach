@@ -1240,10 +1240,18 @@ class RaceDataProcessor:
 
     def _directory_has_keyword(self, directory: Path, keyword: str) -> bool:
         patterns = self._get_patterns(keyword)
-        for ext in ("*.parquet", "*.csv"):
-            for file_path in directory.glob(ext):
-                if self._matches_patterns(file_path.name, patterns):
-                    return True
+        for file_path in directory.iterdir():
+            if not file_path.is_file():
+                continue
+            
+            # Vérification de l'extension insensible à la casse
+            if file_path.suffix.lower() not in ('.parquet', '.csv'):
+                continue
+
+            # Vérification du nom
+            if self._matches_patterns(file_path.name, patterns):
+                return True
+                
         return False
 
     def _build_race_tokens(self, race: str) -> List[str]:
