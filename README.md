@@ -106,7 +106,7 @@ Organize circuit data under `data/{Circuit Name}/...` following the existing fol
 
 > 📦 **Compression win**: The raw hackathon dataset exceeds 17 GB as CSV. After automated Parquet conversion, it drops to ~773 MB (≈96 % smaller) which fits comfortably inside a Cloud Run container image and speeds up cold starts.
 
-We use these dataset:
+We used these datasets:
 1. barber-motorsports-park.zip
 2. circuit-of-the-americas.zip
 3. indianapolis.zip
