@@ -59,6 +59,15 @@ RaceLine AI Coach transforms raw GR Cup telemetry into coaching insights that an
 
 > **Compression win**: The full dataset (multiple circuits × races) starts at >17 GB of CSVs. After automatic Parquet conversion we sit around 773 MB — an ~96% size reduction, dramatically reducing memory and cold-start costs on Cloud Run.
 
+We used these datasets:
+1. barber-motorsports-park.zip
+2. circuit-of-the-americas.zip
+3. indianapolis.zip
+4. road-america.zip
+5. sebring.zip
+6. sonoma.zip
+7. virginia-international-raceway.zip
+
 ## 4. Frontend Experience
 
 - **Circuit & lap selectors**: Paginated vehicle grid (with 🏎️ badges) and lap cards with delta vs golden lap.
