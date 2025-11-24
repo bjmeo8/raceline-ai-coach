@@ -30,7 +30,7 @@ const api = {
 
     // Circuits
     async getCircuits() {
-        return this.get('/circuits');
+        return this.get('/circuits/');
     },
 
     async getCircuitInfo(circuit) {
@@ -60,4 +60,5 @@ const api = {
             race
         });
     }
+
 };
